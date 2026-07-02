@@ -1,0 +1,347 @@
+/* CSS Design System & Stylesheet */
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+  --primary-color: #ff4d6d;
+  --primary-hover: #ff758f;
+  --secondary-color: #ff85a1;
+  --text-dark: #2b2d42;
+  --text-muted: #6c757d;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.15);
+  --border-radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Quicksand', 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Background Ambient Floating Hearts */
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  color: var(--primary-color);
+  opacity: 0;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.65;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(var(--drift)) rotate(var(--rotation)) scale(var(--scale));
+    opacity: 0;
+  }
+}
+
+/* Main Container and Pages */
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page.active {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page.fade-out {
+  opacity: 0 !important;
+  transform: scale(0.95) !important;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Glassmorphic Card Style */
+.card {
+  width: 100%;
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius);
+  padding: 40px 30px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Heart Icon Animation on Page 1 */
+.heart-icon-wrapper {
+  margin-bottom: 25px;
+  font-size: 3.5rem;
+  animation: heartPulse 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 12px rgba(255, 77, 109, 0.5));
+  }
+}
+
+/* Typography styling */
+.question-title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 30px;
+  line-height: 1.35;
+}
+
+.reveal-title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.reveal-subtitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 25px;
+  max-width: 90%;
+}
+
+/* Buttons System */
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 70px;
+  margin-top: 15px;
+  position: relative; /* relative parent context for dodging 'No' button */
+}
+
+.btn {
+  padding: 14px 28px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(255, 77, 109, 0.1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  min-width: 120px;
+  z-index: 5;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+}
+
+.btn-yes:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35);
+}
+
+.btn-yes:active {
+  transform: scale(0.95);
+}
+
+.btn-no {
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  min-width: 120px;
+  z-index: 4;
+  position: relative; /* Default layout. Will transition to position: absolute dynamically */
+  transition: left 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Polaroid-style Scrapbook Gallery */
+.polaroid-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin: 15px 0 25px 0;
+  align-items: center;
+}
+
+.polaroid-card {
+  background: white;
+  padding: 12px 12px 24px 12px;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 220px;
+  max-width: 100%;
+  border: 1px solid #f3f3f3;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  cursor: pointer;
+  backface-visibility: hidden;
+}
+
+.polaroid-card:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  box-shadow: 0 15px 30px rgba(255, 77, 109, 0.18);
+  z-index: 10;
+}
+
+.polaroid-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid #f0f0f0;
+  background-color: #fafafa;
+}
+
+.polaroid-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.polaroid-card:hover .polaroid-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.polaroid-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  color: #4a4e69;
+  margin-top: 14px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Polaroid Tilting variations */
+.tilt-left {
+  transform: rotate(-4deg);
+}
+
+.tilt-right {
+  transform: rotate(5deg);
+}
+
+.tilt-left-slight {
+  transform: rotate(-1.5deg);
+}
+
+/* Replay button styling */
+.replay-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn-replay {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1.5px dashed var(--primary-color);
+  font-size: 0.9rem;
+  padding: 8px 18px;
+  box-shadow: none;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.btn-replay:hover {
+  background: rgba(255, 77, 109, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Media Queries for Desktop and Tablet screens */
+@media (min-width: 481px) {
+  .app-container {
+    max-width: 550px;
+  }
+  
+  .polaroid-gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .polaroid-card {
+    width: 190px;
+  }
+  
+  .question-title {
+    font-size: 2.4rem;
+  }
+
+  .reveal-title {
+    font-size: 2.7rem;
+  }
+}
+
+/* Animation utilities */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}

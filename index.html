@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hey Mama 💕 Do you love me?</title>
+  
+  <!-- Google Fonts: Poppins (Clean Sans-serif), Quicksand (Rounded Cute), Caveat (Handwritten polaroid font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Floating Hearts Background -->
+  <div id="hearts-container" class="hearts-container"></div>
+
+  <!-- Main Application Wrapper -->
+  <main class="app-container">
+    
+    <!-- PAGE 1: The Question Card -->
+    <section id="page-question" class="page active">
+      <div class="card card-question">
+        <div class="heart-icon-wrapper">
+          <div class="main-heart-icon">💖</div>
+        </div>
+        
+        <h1 class="question-title">Hey Mama 💕 <br>do you love me?</h1>
+        
+        <div class="buttons-container">
+          <button id="btn-yes" class="btn btn-yes">Yes</button>
+          <button id="btn-no" class="btn btn-no">No</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: The Reveal -->
+    <section id="page-reveal" class="page">
+      <div class="card card-reveal">
+        <h1 id="reveal-title" class="reveal-title">I love you 3000 ❤️</h1>
+        
+        <p class="reveal-subtitle">You make my heart skip a beat... here's one of my favorite person!</p>
+        
+        <!-- Polaroid Scrapbook Photo Gallery -->
+        <div class="polaroid-gallery">
+          <div class="polaroid-card tilt-left">
+            <div class="polaroid-img-wrapper">
+              <img src="images/1.png" alt="Special Moment 1">
+            </div>
+            <div class="polaroid-caption">Forever & Always ✨</div>
+          </div>
+          
+          <div class="polaroid-card tilt-right">
+            <div class="polaroid-img-wrapper">
+              <img src="images/2.png" alt="Special Moment 2">
+            </div>
+            <div class="polaroid-caption">My favorite person 💖</div>
+          </div>
+          
+          <div class="polaroid-card tilt-left-slight">
+            <div class="polaroid-img-wrapper">
+              <img src="images/3.png" alt="Special Moment 3">
+            </div>
+            <div class="polaroid-caption">To the moon & back 🌙</div>
+          </div>
+        </div>
+        
+        <div class="replay-container">
+          <button id="btn-replay" class="btn btn-replay">Ask me again 🔄</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Application Interaction Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
